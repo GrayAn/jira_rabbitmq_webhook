@@ -1,0 +1,22 @@
+{
+  "web": {
+    "url": "/webhook/"
+  },
+  "amqp": {
+    "host": "localhost",
+    "port": null,
+    "login": "guest",
+    "password": "guest",
+    "virtualhost": "/",
+    "timeout": 120,
+    "ssl": false,
+    "default_queue": "jira_webhook",
+    "custom_queues": {
+      "jira:issue_created": "jira_issue_webhook",
+      "jira:issue_updated": "jira_issue_webhook",
+      "jira:issue_deleted": "jira_issue_webhook",
+      "issuelink_created": "jira_issuelink_webhook",
+      "issuelink_deleted": "jira_issuelink_webhook"
+    }
+  }
+}
