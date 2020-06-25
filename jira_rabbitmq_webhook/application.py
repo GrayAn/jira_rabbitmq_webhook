@@ -31,7 +31,7 @@ class JRWApplication:
     def get_config(self):
         return load_config(self.cfg_path)
 
-    async def _startup(self):
+    async def _startup(self, app: web.Application):
         """Connecting to the RabbitMQ instance"""
         queues = set(self.queues.values())
         queues.add(self.default_queue)
@@ -40,7 +40,7 @@ class JRWApplication:
         for queue in queues:
             await channel.queue_declare(queue, durable=True)
 
-    async def _shutdown(self):
+    async def _shutdown(self, app: web.Application):
         """Disconnecting from the RabbitMQ instance"""
         await self.amqp.shutdown()
 
@@ -70,4 +70,4 @@ def get_application(cfg_path: str) -> JRWApplication:
 
     app = JRWApplication(cfg_path, loop=loop)
 
-    return app
+    return app.app
