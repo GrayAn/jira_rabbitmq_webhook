@@ -40,6 +40,11 @@ Sample file can be found in ``config`` directory (it is copied to the
   * default_queue - Queue to send messages to
   * custom_queues - Queues to send messages for specific events
 
+You also need to configure Jira webhook to send requests to your jira_rabbitmq_webhook instance.
+For example if your jira_rabbitmq_webhook instance is launched on the host jrw.test.com
+and you configured "web"->"url" as "/webhook/" then you should set webhook address in your Jira instance
+as "http://jrw.test.com/webhook/" (or "https://jrw.test.com/webhook/" if you configured SSL for it).
+
 Running
 -------
 
