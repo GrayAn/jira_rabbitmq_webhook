@@ -54,8 +54,11 @@ class JRWApplication:
 
         content = await request.content.read()
         data = loads(content)
-        event = data['webhookEvent']
-        queue = self.queues.get(event, self.default_queue)
+        if 'webhookEvent' in data:
+            event = data['webhookEvent']
+            queue = self.queues.get(event, self.default_queue)
+        else:
+            queue = self.default_queue
         await channel.publish(content, '', queue, {'delivery_mode': 2})
 
         return web.Response()
