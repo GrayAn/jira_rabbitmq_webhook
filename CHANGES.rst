@@ -1,3 +1,9 @@
+Version 0.1.3
+-------------
+
+``webhookEvent`` key was made optional.
+The project could work with workflow webhooks now.
+
 Version 0.1.2
 -------------
 
